@@ -60,12 +60,13 @@ export const BtnAdd = styled.button`
 `;
 
 export const TodoList = styled.div``;
+
 export const TodoIten = styled.div`
   background-color: #f2f2f2;
   border-radius: 3px;
   margin-bottom: 5px;
   display: grid;
-  grid-template-columns: 80fr 10fr 10fr;
+  grid-template-columns: 80fr 20fr;
 `;
 export const TodoName = styled.div`
   height: 45px;
@@ -75,9 +76,13 @@ export const TodoName = styled.div`
   
 `;
 
-export const DivBtns = styled.div``
+export const DivBtns = styled.div`
+display:flex;
+
+`
 export const BtnCheck = styled.div`
   display: flex;
+  width:40px;
   align-items: center;
   color: #f2f2f2;
   background: #10a674;
@@ -91,6 +96,7 @@ export const BtnCheck = styled.div`
 
 export const BtnRemove = styled.div`
   display: flex;
+  width:40px;
   align-items: center;
   color: #f2f2f2;
   background: #ff073a;

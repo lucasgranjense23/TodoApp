@@ -24,6 +24,9 @@ function App() {
   const [text, setNewText] = useState("");
   const [list, setNewList] = useState([]);
   const [contagem, setContagem] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+
 
   const onChangeText = (e) => {
     setNewText(e.target.value);
@@ -47,13 +50,17 @@ function App() {
     }
   };
 
-  const onHandleClickRow = (index) => {
+  const onHandleClickRow = (e, index) => {
     const newList = list;
-    newList[index].showing = true;
+    const newShowingValue = !newList[index].showing;
+    newList[index].showing = newShowingValue ;
+    console.log(index);
+    setSelectedItem(index);
     setNewList([...newList]);
   };
 
   const onHandleClickCheckTodo = (e, index) => {
+    e.stopPropagation();
     let newList = list;
     newList.splice(index, 1);
     setContagem((number) => number + 1);
@@ -98,10 +105,10 @@ function App() {
         <TodoList>
           <div>
             {list.map((el, index) => (
-              <TodoIten onClick={() => onHandleClickRow(index)}>
-                <TodoName>{el}</TodoName>
+              <TodoIten onClick={() => onHandleClickRow(el, index)}>
+                <TodoName>{el.text}</TodoName>
                 <DivBtns>
-                  {el.showing === true ? (
+                  {index === selectedItem ? (
                     <>
                       <BtnCheck onClick={(e) => onHandleClickCheckTodo(e, index)}>
                         <FaCheck />
